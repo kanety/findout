@@ -1,0 +1,48 @@
+<%= form_with scope: :q, url: { action: :index }, method: :get do |f| %>
+  <table>
+    <tr>
+      <td>id:</td>
+      <td><%= f.text_field :id, value: params.dig(:q, :id) %></td>
+    </tr>
+    <tr>
+      <td>created_at:</td>
+      <td>
+        <%= f.text_field :created_at_gteq, value: params.dig(:q, :created_at_gteq) %>
+        to
+        <%= f.text_field :created_at_lteq, value: params.dig(:q, :created_at_lteq) %>
+      </td>
+    </tr>
+    <tr>
+      <td>day of created_at:</td>
+      <td><%= f.text_field :created_at_day, value: params.dig(:q, :created_at_day) %></td>
+    </tr>
+    <tr>
+      <td>title:</td>
+      <td><%= f.text_field :title_matches, value: params.dig(:q, :title_matches) %></td>
+    </tr>
+    <tr>
+      <td>keywords:</td>
+      <td><%= f.text_field :keyword, value: params.dig(:q, :keyword) %></td>
+    </tr>
+  </table>
+  <%= f.submit 'Search' %>
+<% end %>
+
+<table>
+  <tr>
+    <th><%= findout_sort_link 'ID', { id: :asc }, { class: 'id' } %></th>
+    <th><%= findout_sort_link 'Name', { name: :desc } %></th>
+    <th><%= findout_sort_link 'Title', { title: :asc } %></th>
+    <th><%= findout_sort_link 'Created At', { created_at_updated_at: :asc } %></th>
+    <th><%= findout_sort_link 'Updated At', { updated_at_created_at: :desc } %></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.title %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+    </tr>
+  <% end %>
+</table>
