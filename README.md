@@ -5,8 +5,8 @@ A finder base converting query parameters to ActiveRecord relation via Arel.
 ## Dependencies
 
 * ruby 2.5+
-* activerecord 5.2+
-* activesupport 5.2+
+* activerecord 6.0+
+* activesupport 6.0+
 
 ## Installation
 

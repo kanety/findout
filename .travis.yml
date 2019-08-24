@@ -10,7 +10,6 @@ env:
   - DATABASE=mysql
   - DATABASE=postgresql
 gemfile:
-  - gemfiles/rails52.gemfile
   - gemfiles/rails60.gemfile
 before_script:
   - cd spec/dummy
